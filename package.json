@@ -1,0 +1,78 @@
+{
+  "name": "freebird-native",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "precommit": "lint-staged",
+    "start:bundler": "node node_modules/react-native/local-cli/cli.js start --config $PWD/rn-cli.config.js",
+    "start:android": "node node_modules/react-native/local-cli/cli.js run-android",
+    "start:storybook-server": "rnstl && storybook start -p 7007",
+    "start:storybook": "node node_modules/react-native/local-cli/cli.js start --config $PWD/rn-cli-storybook.config.js",
+    "android:menu": "adb shell input keyevent 82",
+    "test": "jest",
+    "start": "haul"
+  },
+  "dependencies": {
+    "conf-store": "^1.3.1",
+    "lodash": "^4.17.5",
+    "mobx": "^4.0.0",
+    "mobx-react": "^5.0.0",
+    "mobx-state-tree": "^2.0.2",
+    "mst-middlewares": "^2.0.2",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.0-alpha.0",
+    "react-native": "0.55.0",
+    "react-navigation": "1.5.8",
+    "recompose": "^0.26.0",
+    "styled-components": "^3.2.2"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.4.0",
+    "@storybook/addon-links": "^3.4.0",
+    "@storybook/addons": "^3.4.0",
+    "@storybook/react-native": "^3.4.0",
+    "@types/expo": "^25.0.3",
+    "@types/lodash": "^4.14.105",
+    "@types/react": "^16.0.40",
+    "@types/react-native": "^0.52.18",
+    "@types/react-navigation": "^1.2.2",
+    "@types/recompose": "^0.24.6",
+    "babel-core": "^6.26.0",
+    "babel-jest": "22.4.3",
+    "babel-preset-react-native": "4.0.0",
+    "babel-runtime": "^6.26.0",
+    "haul": "^1.0.0-beta.13",
+    "husky": "^0.14.3",
+    "jest": "22.4.3",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.1",
+    "react-dom": "^16.3.0-alpha.0",
+    "react-native-debugger-open": "^0.3.17",
+    "react-native-storybook-loader": "^1.8.0",
+    "react-native-typescript-transformer": "^1.2.3",
+    "react-test-renderer": "^16.3.0-alpha.0",
+    "remotedev": "^0.2.7",
+    "ts-loader": "^3.5.0",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.10.0",
+    "tslint-react": "^3.5.1",
+    "typescript": "^2.8.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+      "tslint --fix 'src/**/*.{ts,tsx}'",
+      "git add"
+    ]
+  },
+  "config": {
+    "react-native-storybook-loader": {
+      "searchDir": ["./src/components"],
+      "pattern": "**/story.js",
+      "outputFile": "./storybook/storyLoader.js"
+    }
+  }
+}
